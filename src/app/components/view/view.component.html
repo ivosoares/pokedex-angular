@@ -1,1 +1,63 @@
-<p>view works!</p>
+<div class="bg bg-{{ getType(pokemon) }} py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8 offset-sm-2">
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="mt-2">
+              <h1>{{ pokemon.name }}</h1>
+              <span
+                class="badge border rounded-pill me-1 bg-{{ getType(pokemon) }}"
+                *ngFor="let type of pokemon.types"
+              >
+                {{ type.type.name }}
+              </span>
+            </div>
+
+            <ul class="list-group list-group-flush mt-4" style="width: 20rem">
+              <li class="list-group-item bg-transparent">
+                Experience
+                <b class="float-end">{{ pokemon.base_experience }}</b>
+              </li>
+              <li class="list-group-item bg-transparent">
+                Height <b class="float-end">{{ pokemon.height }}</b>
+              </li>
+              <li class="list-group-item bg-transparent">
+                Weight <b class="float-end">{{ pokemon.weight }}</b>
+              </li>
+            </ul>
+          </div>
+          <div class="col-sm-6">
+            <img
+              src="https://pokeres.bastionbot.org/images/pokemon/{{
+                pokemon.id
+              }}.png"
+              alt=""
+              class="img-fluid d-block mx-auto"
+              style="width: 300px"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container my-3">
+  <div class="row">
+    <div class="col-sm mb-3">
+      <div class="card" >
+        <div class="card-body">
+          <h4 class="card-title text-center mb-3">
+            Bulba
+          </h4>
+          <img
+            src="https://pokeres.bastionbot.org/images/pokemon/1.png"
+            alt=""
+            class="img-fluid d-block mx-auto"
+            style="width: 150px"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
