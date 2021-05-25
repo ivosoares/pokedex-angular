@@ -23,13 +23,21 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              {
+                "glob": "*.svg",
+                "input": "./node_modules/bootstrap-icons/icons/",
+                "output": "/assets/icons/"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+            ]
           },
           "configurations": {
             "production": {
