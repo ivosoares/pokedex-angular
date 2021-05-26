@@ -45,13 +45,13 @@ export class PokemonService {
     return this.http.get<any[]>(url);
   }
 
-  getEvolution(id: number): Observable<any[]> {
+  getEvolution(id: any): Observable<any[]> {
     const url = `${environment.apiUrl}evolution-chain/${id}`;
     return this.http.get<any[]>(url);
   }
 
   getSpecies(name: string): Observable<any[]> {
-    const url = `${environment.apiUrl}pokemon-species/${name}}`;
+    const url = `${environment.apiUrl}pokemon-species/${name}`;
     return this.http.get<any[]>(url);
   }
 

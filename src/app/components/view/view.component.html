@@ -41,23 +41,108 @@
       </div>
     </div>
   </div>
+  <div class="custom-shape-divider-bottom">
+    <svg
+      data-name="Layer 1"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1200 120"
+      preserveAspectRatio="none"
+    >
+      <path
+        d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+        class="shape-fill"
+      ></path>
+    </svg>
+  </div>
 </div>
+
 <div class="container my-3">
   <div class="row">
-    <div class="col-sm mb-3">
-      <div class="card" >
-        <div class="card-body">
-          <h4 class="card-title text-center mb-3">
-            Bulba
-          </h4>
-          <img
-            src="https://pokeres.bastionbot.org/images/pokemon/1.png"
-            alt=""
-            class="img-fluid d-block mx-auto"
-            style="width: 150px"
-          />
+    <div class="col-sm-8 offset-sm-2">
+      <!-- Evolucao do pokemon -->
+      <div class="row">
+        <h2>Evoluções</h2>
+        <div class="col-sm mb-3" *ngFor="let evolution of pokemon.evolution">
+          <div class="card" [routerLink]="['/view', evolution.name]">
+            <div class="card-body">
+              <h4 class="card-title text-center mb-3">
+                {{ evolution.name }}
+              </h4>
+              <img
+                src="https://pokeres.bastionbot.org/images/pokemon/{{
+                  evolution.id
+                }}.png"
+                alt=""
+                class="img-fluid d-block mx-auto"
+                style="width: 150px"
+              />
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Status do pokemon -->
+
+      <div class="card mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Stats</h4>
+          <div *ngFor="let stat of pokemon.stats" class="row mt-3">
+            <div class="col-sm-2">
+              <h6 class="text-sm-end mt-1">{{ stat.stat.name }}</h6>
+            </div>
+            <div class="col-sm-10">
+              <div class="progress" style="height: 30px">
+                <div
+                  class="progress-bar progress-bar-striped bg-{{
+                    getType(pokemon)
+                  }}"
+                  role="progressbar"
+                  style="height: 30px"
+                  [style.width]="stat.base_stat + '%'"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                >
+                  <b>{{ stat.base_stat }}</b>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Habilidades -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Abilities</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let ability of pokemon.abilities" class="list-group-item">
+            {{ ability.ability.name }}
+          </li>
+        </ul>
+      </div>
+
+      <!-- moves -->
+      <div class="card mb-3">
+        <div class="card-body">
+          <h4 class="card-title">Moves</h4>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li *ngFor="let move of pokemon.moves" class="list-group-item">
+            {{ move.move.name }}
+          </li>
+        </ul>
       </div>
     </div>
   </div>
+</div>
+
+<div class="position-absolute top-0 start-0">
+  <a class="btn btn-lg text-white" [routerLink]="['/']">
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-arrow-left"
+          viewBox="0 0 16 16">
+          <path fill-rule="evenodd"
+              d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+      </svg>
+  </a>
 </div>
